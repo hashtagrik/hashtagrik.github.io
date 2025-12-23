@@ -1,8 +1,13 @@
 ---
-import WIP from '../components/WIP.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+const matches = import.meta.glob('./posts/*.mdx', { eager: true });
+const posts = Object.values(matches);
 ---
 
 <Layout>
-	<WIP />
+	<Header />
+	<main>
+		{posts.map(post => <p>{post.title}</p>)}
+	</main>
 </Layout>
